@@ -1,0 +1,4 @@
+# netstat -n | awk '/^tcp/ {++y[$NF]} END {for(w in y) print w, y[w]}'
+CLOSE_WAIT         348
+ESTABLISHED        1240
+TIME_WAIT          5621
