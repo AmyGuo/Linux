@@ -11,7 +11,7 @@
 9. [编写脚本，实现人机【石头，剪刀，布】的游戏](https://github.com/AmyGuo/Linux/tree/main/shellTest/9.sh)
 10. [编写脚本测试192.168.56.0/24 整个网段中哪些主机处于开机状态，哪些主机处于关机状态](https://github.com/AmyGuo/Linux/tree/main/shellTest/10.sh)
 11. [编写脚本，显示进度条](https://github.com/AmyGuo/Linux/tree/main/shellTest/11.sh)
-12. [编写脚本，显示进度条](https://github.com/AmyGuo/Linux/tree/main/shellTest/12.sh)
+12. [进度条，动态时针，（定义一个显示进度的函数，屏幕快速显示|/-\）](https://github.com/AmyGuo/Linux/tree/main/shellTest/12.sh)
 13. [9*9乘法表](https://github.com/AmyGuo/Linux/tree/main/shellTest/13.sh)
 14. [使用死循环实时显示eth0网卡发送的数据包流量](https://github.com/AmyGuo/Linux/tree/main/shellTest/14.sh)
 15. [使用user.txt文件中的人员名单，在计算机中自动创建对应的账户并配置初始密码](https://github.com/AmyGuo/Linux/tree/main/shellTest/15.sh)
