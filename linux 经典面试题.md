@@ -134,4 +134,105 @@
    raid5:由三块或以上硬盘组成；每块硬盘大小必须一致；磁盘利用率时n-1块盘；利用奇偶校验，拥有磁盘容错功能（只支持1块硬盘损坏）
 
    
+> shell编程类
+
+1. 有一个b.txt文本，要求将所有域名截取出来并统计重复域名出现次数
+
+   http://www.baidu.com/index.html
+
+   http://www.aa.com/index.html
+
+   http://www.bb.com/index.html
+
+   http://www.baidu.com/index.html
+
+   cat b.txt | cut -d "/" -f 3 | sort | uniq  -c | sort -nr
+
+   2 www.baidu.com
+
+   1 www.aa.com
+
+   1 www.bb.com
+
+2. 统计当前服务器正在连接的IP地址，并按照连接次数排序
+
+   netstat -an | grep "ESTABLISHED" | awk '{print $5}' | cut -d ":" -f 1 | sort -n | uniq -c | sort -nr
+
+3. 使用循环在/test目录下创建10个txt文件，要求文件名称由6位随机小写字母数字加固定字符串组成（_gg），例如：pzjefg_gg.txt
+
+   ```
+   #!/bin/bash
+   
+   if [ !d /test ];then
+   
+   ​	mkdir /test
+   
+   fi
+   
+   cd /test
+   
+   for ((i=1;i<=10;i++))
+   
+   do
+   
+   ​	filename=$(tr -dc 'A-Za-z0-9' < /dev/urandom | head -c 6)
+   
+   ​	touch "$filename"_gg.txt
+   
+   done
+   ```
+
+4. 生成随机数
+
+   echo $RANDOM 0-32767的数字
+
+   echo $(($RANDOM%1000)) 1000以内的随机数
+
+5. 批量检测多个网站是否可以正常访问，要求使用shell数组实现，检测策略尽量模拟用户真实访问模式
+
+   http://www.test.com  http://www.baidu.com  http://www.aaa.com
+
+   ```
+   #!/bin/bash
+   
+   web={
+   
+   http://www.test.com
+   
+   http://www.baidu.com  
+   
+   http://www.aaa.com
+   
+   }
+   
+   for i in ${web[*]}
+   
+   do
+   
+   code=$(curl -o /dev/null -s --connect-timeout 5 -w '%{http_code}' $i | grep -E "200|302")
+   
+   if [ "$code"!= "" ];then
+   
+   ​	echo "$i is ok" >> /root/ok.log
+   
+   else
+   
+   ​	sleep 10
+   
+   ​	code=$(curl -o /dev/null -s --connect-timeout 5 -w '%{http_code}' $i | grep -E "200|302")
+   
+   ​	if [ "$code"!= "" ];then
+   
+   ​		echo "$i is ok" >> /root/ok.log
+   
+   ​	else
+   
+   ​		echo "$i is error" >> /root/error.log
+   
+   ​	fi
+   
+   fi
+   
+   done
+   ```
 
