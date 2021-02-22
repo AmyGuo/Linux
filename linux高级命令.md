@@ -158,4 +158,5 @@ ssh -p 22 -C -f -N -g -L 9200:192.168.1.19:9200 ihavecar@192.168.1.19
 命令执行完后，访问192.168.1.15:9200端口则真实是访问192.168.1.19:9200端口。
 
 参考链接：https://cloud.tencent.com/developer/article/1149534
+
 linux速查表：https://cloud.tencent.com/developer/article/1115476?from=article.detail.111559
